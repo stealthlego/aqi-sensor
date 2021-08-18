@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import requests
 import logging
 import os
@@ -26,7 +28,9 @@ client.loop_start()
 while True:
     response = requests.get(url=api_string)
     if response.status_code == 200:
-        aqi = response.json()[1]['AQI']
+        r = response.json()
+        print(r)
+        aqi = r[0]['AQI']
         info = client.publish("home-assistant/aqi/number", aqi)
         # logging.info(info.is_published())
         logging.info(f'Just published {aqi} to topic AQI')

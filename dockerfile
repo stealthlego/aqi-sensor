@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7.9-slim-buster
 
 ADD sensor.py /
 ADD requirements.txt /
